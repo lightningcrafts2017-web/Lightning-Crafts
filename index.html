@@ -1,0 +1,3481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lightning Crafts | Out there, but Everyday</title>
+
+<style>
+
+:root {
+    --black: #111014;
+    --dark-purple: #21172b;
+    --pink: #e7a8c8;
+    --light-pink: #f7dce9;
+    --lilac: #c8b3e6;
+    --blue: #b8d9ed;
+    --white: #fffaff;
+    --gray: #d9d3dc;
+    --text: #29232d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top left, rgba(200,179,230,.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184,217,237,.18), transparent 35%),
+        var(--white);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: var(--black);
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,.25);
+}
+
+.header-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cat-logo {
+    width: 42px;
+    height: 42px;
+    position: relative;
+}
+
+/* Simple black/white cat silhouette */
+.cat-logo::before {
+    content: "🐈‍⬛";
+    font-size: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 1.65rem;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+.brand-text p {
+    margin: 2px 0 0;
+    font-size: .8rem;
+    color: var(--pink);
+    font-style: italic;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a,
+.dropbtn {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: .95rem;
+    padding: 10px 13px;
+    cursor: pointer;
+}
+
+nav a:hover,
+.dropbtn:hover {
+    color: var(--pink);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 190px;
+    background: var(--black);
+    border: 1px solid rgba(231,168,200,.4);
+    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 11px 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.cart-button {
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    border-radius: 20px;
+    padding: 9px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.cart-button:hover {
+    background: var(--lilac);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    background:
+        linear-gradient(
+            rgba(17,16,20,.72),
+            rgba(33,23,43,.72)
+        ),
+        radial-gradient(
+            circle at center,
+            var(--lilac),
+            var(--black) 70%
+        );
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero h2 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: normal;
+    margin: 0 0 15px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--light-pink);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.hero-button:hover {
+    background: var(--blue);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    max-width: 1300px;
+    margin: auto;
+    padding: 70px 5%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #675c6c;
+}
+
+/* =========================
+   CATEGORY BAR
+========================= */
+
+.category-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.category-button {
+    border: 1px solid var(--lilac);
+    background: white;
+    padding: 9px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.category-button:hover,
+.category-button.active {
+    background: var(--lilac);
+}
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 28px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e4dce8;
+    box-shadow: 0 5px 18px rgba(40,20,50,.08);
+    transition: .2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(40,20,50,.15);
+}
+
+.product-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background:
+        linear-gradient(135deg, var(--light-pink), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    text-align: center;
+    color: #675c6c;
+    padding: 20px;
+}
+
+.photo-placeholder span {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.sku {
+    font-size: .78rem;
+    color: #777;
+    letter-spacing: .5px;
+}
+
+.product-materials {
+    font-size: .9rem;
+    color: #62596a;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.product-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.product-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 20px;
+    padding: 9px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.add-button {
+    background: var(--black);
+    color: white;
+}
+
+.add-button:hover {
+    background: var(--dark-purple);
+}
+
+.details-button {
+    background: var(--light-pink);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    background: #f4edf7;
+    max-width: none;
+}
+
+.about-inner {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about h2 {
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+/* =========================
+   CUSTOM ORDERS
+========================= */
+
+.custom-orders {
+    background: var(--dark-purple);
+    color: white;
+    max-width: none;
+}
+
+.custom-inner {
+    max-width: 800px;
+    margin: auto;
+}
+
+.custom-inner h2 {
+    font-weight: normal;
+    font-size: 2.3rem;
+}
+
+.custom-form {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.custom-form input,
+.custom-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: inherit;
+}
+
+.custom-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.custom-form button {
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    padding: 13px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-panel {
+    position: fixed;
+    right: -430px;
+    top: 0;
+    width: min(430px, 100%);
+    height: 100vh;
+    background: white;
+    z-index: 2000;
+    box-shadow: -5px 0 20px rgba(0,0,0,.25);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.open {
+    right: 0;
+}
+
+.cart-header {
+    background: var(--black);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.cart-item strong {
+    display: block;
+}
+
+.remove-item {
+    margin-top: 6px;
+    background: none;
+    border: none;
+    color: #9c5276;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cart-footer {
+    border-top: 1px solid #ddd;
+    padding: 20px;
+}
+
+.cart-total {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 25px;
+    background: var(--pink);
+    color: var(--black);
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #6d6272;
+}
+
+.error {
+    text-align: center;
+    padding: 30px;
+    background: #f7e7ef;
+    border-radius: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+footer a {
+    color: var(--pink);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <div class="cat-logo"></div>
+
+            <div class="brand-text">
+
+                <h1>Lightning Crafts</h1>
+
+                <p>Out there, but Everyday</p>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    Jewelry ▾
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="#catalog"
+                       onclick="filterProducts('all-jewelry')">
+                        All Jewelry
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('necklaces')">
+                        Necklaces
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('rings')">
+                        Rings
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('earrings')">
+                        Earrings
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('bracelets')">
+                        Bracelets
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('jewelry sets')">
+                        Jewelry Sets
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('arm bands')">
+                        Arm Bands
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    Clothing ▾
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="#catalog"
+                       onclick="filterProducts('all-clothing')">
+                        All Clothing
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('winter wear')">
+                        Winter Wear
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('tops')">
+                        Tops
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('bottoms')">
+                        Bottoms
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('dresses')">
+                        Dresses
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('accessories')">
+                        Accessories
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="#custom">Custom Orders</a>
+
+
+            <button class="cart-button"
+                    onclick="toggleCart()">
+
+                Cart (<span id="cart-count">0</span>)
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h2>Lightning Crafts</h2>
+
+        <p>
+            Out there, but Everyday
+        </p>
+
+        <a href="#catalog"
+           class="hero-button">
+
+            Browse the Collection
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATALOG
+========================= -->
+
+<section id="catalog">
+
+    <div class="section-title">
+
+        <h2 id="catalog-title">
+            Current Collection
+        </h2>
+
+        <p>
+            Handmade pieces created to be worn,
+            used, enjoyed, and uniquely yours.
+        </p>
+
+    </div>
+
+
+    <div class="category-bar">
+
+        <button class="category-button active"
+                onclick="filterProducts('all')">
+            All
+        </button>
+
+        <button class="category-button"
+                onclick="filterProducts('all-jewelry')">
+            Jewelry
+        </button>
+
+        <button class="category-button"
+                onclick="filterProducts('all-clothing')">
+            Clothing
+        </button>
+
+    </div>
+
+
+    <div id="product-grid"
+         class="product-grid">
+
+        <div class="loading">
+            Loading the collection...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about">
+
+    <div class="about-inner">
+
+        <h2>About Lightning Crafts</h2>
+
+        <p>
+            Lightning Crafts is a handmade collection
+            built around unusual ideas, wearable art,
+            and pieces that can become part of everyday life.
+        </p>
+
+        <p>
+            From jewelry to clothing and accessories,
+            every premade piece is created individually
+            with its own personality.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CUSTOM ORDERS
+========================= -->
+
+<section class="custom-orders"
+         id="custom">
+
+    <div class="custom-inner">
+
+        <h2>Custom Orders</h2>
+
+        <p>
+            Looking for something made specifically
+            for you? Tell me what you're imagining.
+        </p>
+
+
+        <form class="custom-form"
+              action="mailto:lightningcrafts2017@gmail.com"
+              method="post"
+              enctype="text/plain">
+
+            <input
+                type="text"
+                name="Name"
+                placeholder="Your Name"
+                required
+            >
+
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="Your Email"
+                required
+            >
+
+
+            <textarea
+                name="Custom Order"
+                placeholder="Tell me about what you'd like created..."
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Send Custom Order Request
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div id="cart-panel"
+     class="cart-panel">
+
+    <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button class="close-cart"
+                onclick="toggleCart()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div id="cart-items"
+         class="cart-items">
+
+        <p>
+            Your cart is empty.
+        </p>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            Total:
+            <strong id="cart-total">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <button class="checkout-button"
+                onclick="startCheckout()">
+
+            Continue to Checkout
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Lightning Crafts
+    </p>
+
+    <p>
+        Out there, but Everyday
+    </p>
+
+    <p>
+        <a href="mailto:lightningcrafts2017@gmail.com">
+            lightningcrafts2017@gmail.com
+        </a>
+    </p>
+
+</footer>
+
+
+<script>
+
+/*
+========================================================
+LIGHTNING CRAFTS PRODUCT CONNECTION
+========================================================
+
+IMPORTANT:
+
+Replace the URL below with the Web App URL from
+Google Apps Script.
+
+========================================================
+*/
+
+const CATALOG_URL =
+    "<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lightning Crafts | Out there, but Everyday</title>
+
+<style>
+
+:root {
+    --black: #111014;
+    --dark-purple: #21172b;
+    --pink: #e7a8c8;
+    --light-pink: #f7dce9;
+    --lilac: #c8b3e6;
+    --blue: #b8d9ed;
+    --white: #fffaff;
+    --gray: #d9d3dc;
+    --text: #29232d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top left, rgba(200,179,230,.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(184,217,237,.18), transparent 35%),
+        var(--white);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: var(--black);
+    color: white;
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,.25);
+}
+
+.header-inner {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cat-logo {
+    width: 42px;
+    height: 42px;
+    position: relative;
+}
+
+/* Simple black/white cat silhouette */
+.cat-logo::before {
+    content: "🐈‍⬛";
+    font-size: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 1.65rem;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+.brand-text p {
+    margin: 2px 0 0;
+    font-size: .8rem;
+    color: var(--pink);
+    font-style: italic;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a,
+.dropbtn {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: .95rem;
+    padding: 10px 13px;
+    cursor: pointer;
+}
+
+nav a:hover,
+.dropbtn:hover {
+    color: var(--pink);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 190px;
+    background: var(--black);
+    border: 1px solid rgba(231,168,200,.4);
+    box-shadow: 0 8px 20px rgba(0,0,0,.3);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 11px 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.cart-button {
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    border-radius: 20px;
+    padding: 9px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.cart-button:hover {
+    background: var(--lilac);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    background:
+        linear-gradient(
+            rgba(17,16,20,.72),
+            rgba(33,23,43,.72)
+        ),
+        radial-gradient(
+            circle at center,
+            var(--lilac),
+            var(--black) 70%
+        );
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero h2 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: normal;
+    margin: 0 0 15px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--light-pink);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.hero-button:hover {
+    background: var(--blue);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    max-width: 1300px;
+    margin: auto;
+    padding: 70px 5%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #675c6c;
+}
+
+/* =========================
+   CATEGORY BAR
+========================= */
+
+.category-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.category-button {
+    border: 1px solid var(--lilac);
+    background: white;
+    padding: 9px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.category-button:hover,
+.category-button.active {
+    background: var(--lilac);
+}
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 28px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e4dce8;
+    box-shadow: 0 5px 18px rgba(40,20,50,.08);
+    transition: .2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(40,20,50,.15);
+}
+
+.product-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background:
+        linear-gradient(135deg, var(--light-pink), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    text-align: center;
+    color: #675c6c;
+    padding: 20px;
+}
+
+.photo-placeholder span {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.sku {
+    font-size: .78rem;
+    color: #777;
+    letter-spacing: .5px;
+}
+
+.product-materials {
+    font-size: .9rem;
+    color: #62596a;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.product-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.product-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 20px;
+    padding: 9px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.add-button {
+    background: var(--black);
+    color: white;
+}
+
+.add-button:hover {
+    background: var(--dark-purple);
+}
+
+.details-button {
+    background: var(--light-pink);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    background: #f4edf7;
+    max-width: none;
+}
+
+.about-inner {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about h2 {
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+/* =========================
+   CUSTOM ORDERS
+========================= */
+
+.custom-orders {
+    background: var(--dark-purple);
+    color: white;
+    max-width: none;
+}
+
+.custom-inner {
+    max-width: 800px;
+    margin: auto;
+}
+
+.custom-inner h2 {
+    font-weight: normal;
+    font-size: 2.3rem;
+}
+
+.custom-form {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.custom-form input,
+.custom-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: inherit;
+}
+
+.custom-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.custom-form button {
+    background: var(--pink);
+    color: var(--black);
+    border: none;
+    padding: 13px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-panel {
+    position: fixed;
+    right: -430px;
+    top: 0;
+    width: min(430px, 100%);
+    height: 100vh;
+    background: white;
+    z-index: 2000;
+    box-shadow: -5px 0 20px rgba(0,0,0,.25);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-panel.open {
+    right: 0;
+}
+
+.cart-header {
+    background: var(--black);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.cart-item strong {
+    display: block;
+}
+
+.remove-item {
+    margin-top: 6px;
+    background: none;
+    border: none;
+    color: #9c5276;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cart-footer {
+    border-top: 1px solid #ddd;
+    padding: 20px;
+}
+
+.cart-total {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 25px;
+    background: var(--pink);
+    color: var(--black);
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #6d6272;
+}
+
+.error {
+    text-align: center;
+    padding: 30px;
+    background: #f7e7ef;
+    border-radius: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+footer a {
+    color: var(--pink);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <div class="cat-logo"></div>
+
+            <div class="brand-text">
+
+                <h1>Lightning Crafts</h1>
+
+                <p>Out there, but Everyday</p>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    Jewelry ▾
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="#catalog"
+                       onclick="filterProducts('all-jewelry')">
+                        All Jewelry
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('necklaces')">
+                        Necklaces
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('rings')">
+                        Rings
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('earrings')">
+                        Earrings
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('bracelets')">
+                        Bracelets
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('jewelry sets')">
+                        Jewelry Sets
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('arm bands')">
+                        Arm Bands
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="dropdown">
+
+                <button class="dropbtn">
+                    Clothing ▾
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="#catalog"
+                       onclick="filterProducts('all-clothing')">
+                        All Clothing
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('winter wear')">
+                        Winter Wear
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('tops')">
+                        Tops
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('bottoms')">
+                        Bottoms
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('dresses')">
+                        Dresses
+                    </a>
+
+                    <a href="#catalog"
+                       onclick="filterProducts('accessories')">
+                        Accessories
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="#custom">Custom Orders</a>
+
+
+            <button class="cart-button"
+                    onclick="toggleCart()">
+
+                Cart (<span id="cart-count">0</span>)
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h2>Lightning Crafts</h2>
+
+        <p>
+            Out there, but Everyday
+        </p>
+
+        <a href="#catalog"
+           class="hero-button">
+
+            Browse the Collection
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATALOG
+========================= -->
+
+<section id="catalog">
+
+    <div class="section-title">
+
+        <h2 id="catalog-title">
+            Current Collection
+        </h2>
+
+        <p>
+            Handmade pieces created to be worn,
+            used, enjoyed, and uniquely yours.
+        </p>
+
+    </div>
+
+
+    <div class="category-bar">
+
+        <button class="category-button active"
+                onclick="filterProducts('all')">
+            All
+        </button>
+
+        <button class="category-button"
+                onclick="filterProducts('all-jewelry')">
+            Jewelry
+        </button>
+
+        <button class="category-button"
+                onclick="filterProducts('all-clothing')">
+            Clothing
+        </button>
+
+    </div>
+
+
+    <div id="product-grid"
+         class="product-grid">
+
+        <div class="loading">
+            Loading the collection...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about">
+
+    <div class="about-inner">
+
+        <h2>About Lightning Crafts</h2>
+
+        <p>
+            Lightning Crafts is a handmade collection
+            built around unusual ideas, wearable art,
+            and pieces that can become part of everyday life.
+        </p>
+
+        <p>
+            From jewelry to clothing and accessories,
+            every premade piece is created individually
+            with its own personality.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CUSTOM ORDERS
+========================= -->
+
+<section class="custom-orders"
+         id="custom">
+
+    <div class="custom-inner">
+
+        <h2>Custom Orders</h2>
+
+        <p>
+            Looking for something made specifically
+            for you? Tell me what you're imagining.
+        </p>
+
+
+        <form class="custom-form"
+              action="mailto:lightningcrafts2017@gmail.com"
+              method="post"
+              enctype="text/plain">
+
+            <input
+                type="text"
+                name="Name"
+                placeholder="Your Name"
+                required
+            >
+
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="Your Email"
+                required
+            >
+
+
+            <textarea
+                name="Custom Order"
+                placeholder="Tell me about what you'd like created..."
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Send Custom Order Request
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div id="cart-panel"
+     class="cart-panel">
+
+    <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button class="close-cart"
+                onclick="toggleCart()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div id="cart-items"
+         class="cart-items">
+
+        <p>
+            Your cart is empty.
+        </p>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            Total:
+            <strong id="cart-total">
+                $0.00
+            </strong>
+
+        </div>
+
+
+        <button class="checkout-button"
+                onclick="startCheckout()">
+
+            Continue to Checkout
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Lightning Crafts
+    </p>
+
+    <p>
+        Out there, but Everyday
+    </p>
+
+    <p>
+        <a href="mailto:lightningcrafts2017@gmail.com">
+            lightningcrafts2017@gmail.com
+        </a>
+    </p>
+
+</footer>
+
+
+<script>
+
+/*
+========================================================
+LIGHTNING CRAFTS PRODUCT CONNECTION
+========================================================
+
+IMPORTANT:
+
+Replace the URL below with the Web App URL from
+Google Apps Script.
+
+========================================================
+*/
+
+const CATALOG_URL =
+    "PASTE_YOUR_WEB_APP_URL_HERE";
+
+
+/*
+========================================================
+GLOBAL VARIABLES
+========================================================
+*/
+
+let products = [];
+
+let cart = [];
+
+let currentFilter = "all";
+
+
+/*
+========================================================
+LOAD PRODUCTS
+========================================================
+*/
+
+async function loadProducts() {
+
+    const grid =
+        document.getElementById("product-grid");
+
+
+    try {
+
+        const response =
+            await fetch(CATALOG_URL);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to connect to the catalog."
+            );
+
+        }
+
+
+        products =
+            await response.json();
+
+
+        renderProducts();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        grid.innerHTML = `
+
+            <div class="error">
+
+                <h3>
+                    The collection could not be loaded.
+                </h3>
+
+                <p>
+                    Please check the catalog connection.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/*
+========================================================
+RENDER PRODUCTS
+========================================================
+*/
+
+function renderProducts() {
+
+    const grid =
+        document.getElementById("product-grid");
+
+
+    let filteredProducts =
+        [...products];
+
+
+    if (currentFilter !== "all") {
+
+        filteredProducts =
+            filteredProducts.filter(product =>
+                matchesFilter(product)
+            );
+
+    }
+
+
+    if (filteredProducts.length === 0) {
+
+        grid.innerHTML = `
+
+            <div class="loading">
+
+                <h3>
+                    Nothing here yet.
+                </h3>
+
+                <p>
+                    Check back soon for new pieces.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filteredProducts
+            .map(product => createProductCard(product))
+            .join("");
+
+}
+
+
+/*
+========================================================
+FILTER LOGIC
+========================================================
+*/
+
+function matchesFilter(product) {
+
+    const category =
+        String(product.category || "")
+            .toLowerCase()
+            .trim();
+
+
+    const jewelryCategories = [
+
+        "necklaces",
+        "rings",
+        "earrings",
+        "bracelets",
+        "jewelry sets",
+        "arm bands"
+
+    ];
+
+
+    const clothingCategories = [
+
+        "winter wear",
+        "tops",
+        "bottoms",
+        "dresses",
+        "accessories"
+
+    ];
+
+
+    if (currentFilter === "all-jewelry") {
+
+        return jewelryCategories.includes(category);
+
+    }
+
+
+    if (currentFilter === "all-clothing") {
+
+        return clothingCategories.includes(category);
+
+    }
+
+
+    return category === currentFilter;
+
+}
+
+
+/*
+========================================================
+PRODUCT CARD
+========================================================
+*/
+
+function createProductCard(product) {
+
+    const price =
+        Number(product.price || 0);
+
+
+    let photoHTML;
+
+
+    if (product.photo) {
+
+        photoHTML = `
+
+            <img
+                src="${escapeHTML(product.photo)}"
+                alt="${escapeHTML(product.name)}"
+                loading="lazy"
+            >
+
+        `;
+
+    } else {
+
+        photoHTML = `
+
+            <div class="photo-placeholder">
+
+                <span>🐈‍⬛</span>
+
+                Photo coming soon
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <article class="product-card">
+
+
+            <div class="product-photo">
+
+                ${photoHTML}
+
+            </div>
+
+
+            <div class="product-info">
+
+
+                <h3>
+                    ${escapeHTML(product.name)}
+                </h3>
+
+
+                <div class="sku">
+
+                    SKU:
+                    ${escapeHTML(product.sku)}
+
+                </div>
+
+
+                ${
+                    product.materials
+                    ?
+                    `
+                    <div class="product-materials">
+
+                        ${escapeHTML(product.materials)}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                ${
+                    product.size
+                    ?
+                    `
+                    <div class="product-materials">
+
+                        Size:
+                        ${escapeHTML(product.size)}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="product-price">
+
+                    $${price.toFixed(2)}
+
+                </div>
+
+
+                <div class="product-actions">
+
+
+                    <button
+                        class="details-button"
+                        onclick="showProductDetails('${escapeHTML(product.sku)}')">
+
+                        Details
+
+                    </button>
+
+
+                    <button
+                        class="add-button"
+                        onclick="addToCart('${escapeHTML(product.sku)}')">
+
+                        Add to Cart
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+    `;
+
+}
+
+
+/*
+========================================================
+FILTER PRODUCTS
+========================================================
+*/
+
+function filterProducts(filter) {
+
+    currentFilter =
+        filter.toLowerCase();
+
+
+    const title =
+        document.getElementById("catalog-title");
+
+
+    const titles = {
+
+        "all":
+            "Current Collection",
+
+        "all-jewelry":
+            "Jewelry",
+
+        "all-clothing":
+            "Clothing",
+
+        "necklaces":
+            "Necklaces",
+
+        "rings":
+            "Rings",
+
+        "earrings":
+            "Earrings",
+
+        "bracelets":
+            "Bracelets",
+
+        "jewelry sets":
+            "Jewelry Sets",
+
+        "arm bands":
+            "Arm Bands",
+
+        "winter wear":
+            "Winter Wear",
+
+        "tops":
+            "Tops",
+
+        "bottoms":
+            "Bottoms",
+
+        "dresses":
+            "Dresses",
+
+        "accessories":
+            "Accessories"
+
+    };
+
+
+    title.textContent =
+        titles[currentFilter] ||
+        "Current Collection";
+
+
+    renderProducts();
+
+
+    document
+        .querySelectorAll(".category-button")
+        .forEach(button =>
+            button.classList.remove("active")
+        );
+
+
+    document
+        .getElementById("catalog")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/*
+========================================================
+PRODUCT DETAILS
+========================================================
+*/
+
+function showProductDetails(sku) {
+
+    const product =
+        products.find(
+            item => String(item.sku) === String(sku)
+        );
+
+
+    if (!product) return;
+
+
+    const details = [
+
+        `Product: ${product.name}`,
+
+        `SKU: ${product.sku}`,
+
+        product.category
+            ? `Category: ${product.category}`
+            : "",
+
+        product.size
+            ? `Size: ${product.size}`
+            : "",
+
+        product.materials
+            ? `Materials: ${product.materials}`
+            : "",
+
+        `Price: $${Number(product.price || 0).toFixed(2)}`
+
+    ]
+    .filter(Boolean)
+    .join("\n");
+
+
+    alert(details);
+
+}
+
+
+/*
+========================================================
+CART
+========================================================
+*/
+
+function addToCart(sku) {
+
+    const product =
+        products.find(
+            item => String(item.sku) === String(sku)
+        );
+
+
+    if (!product) return;
+
+
+    const alreadyInCart =
+        cart.find(
+            item =>
+                String(item.sku) === String(sku)
+        );
+
+
+    /*
+       Each premade item is an individual item.
+       Therefore we don't increase quantity.
+    */
+
+    if (!alreadyInCart) {
+
+        cart.push(product);
+
+    }
+
+
+    updateCart();
+
+
+    document
+        .getElementById("cart-panel")
+        .classList.add("open");
+
+}
+
+
+/*
+========================================================
+REMOVE FROM CART
+========================================================
+*/
+
+function removeFromCart(sku) {
+
+    cart =
+        cart.filter(
+            item =>
+                String(item.sku) !== String(sku)
+        );
+
+
+    updateCart();
+
+}
+
+
+/*
+========================================================
+UPDATE CART
+========================================================
+*/
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cart-items");
+
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+
+    const cartTotal =
+        document.getElementById("cart-total");
+
+
+    cartCount.textContent =
+        cart.length;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <p>
+                Your cart is empty.
+            </p>
+
+        `;
+
+        cartTotal.textContent =
+            "$0.00";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cartItems.innerHTML =
+        cart.map(product => {
+
+            const price =
+                Number(product.price || 0);
+
+
+            total += price;
+
+
+            return `
+
+                <div class="cart-item">
+
+                    <strong>
+                        ${escapeHTML(product.name)}
+                    </strong>
+
+                    <span>
+                        SKU: ${escapeHTML(product.sku)}
+                    </span>
+
+                    <br>
+
+                    <span>
+                        $${price.toFixed(2)}
+                    </span>
+
+
+                    <button
+                        class="remove-item"
+                        onclick="removeFromCart('${escapeHTML(product.sku)}')">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    cartTotal.textContent =
+        `$${total.toFixed(2)}`;
+
+}
+
+
+/*
+========================================================
+OPEN/CLOSE CART
+========================================================
+*/
+
+function toggleCart() {
+
+    document
+        .getElementById("cart-panel")
+        .classList.toggle("open");
+
+}
+
+
+/*
+========================================================
+CHECKOUT
+========================================================
+*/
+
+function startCheckout() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your cart is empty."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       We are intentionally leaving the actual
+       payment connection for the next stage.
+
+       The cart already knows:
+       - Product
+       - SKU
+       - Price
+
+       Next we'll add:
+       - Customer name
+       - Email
+       - Shipping address
+       - Shipping calculation
+       - Payment method
+       - Square / PayPal / Venmo workflow
+    */
+
+
+    const orderText =
+        cart
+            .map(product =>
+                `${product.sku} - ${product.name} - $${Number(product.price || 0).toFixed(2)}`
+            )
+            .join("\n");
+
+
+    alert(
+
+        "Your selected items:\n\n" +
+
+        orderText +
+
+        "\n\nCheckout will be connected in the next stage."
+
+    );
+
+}
+
+
+/*
+========================================================
+ESCAPE HTML
+========================================================
+*/
+
+function escapeHTML(value) {
+
+    return String(value || "")
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/*
+========================================================
+START WEBSITE
+========================================================
+*/
+
+loadProducts();
+
+</script>
+
+</body>
+</html>";
+
+
+/*
+========================================================
+GLOBAL VARIABLES
+========================================================
+*/
+
+let products = [];
+
+let cart = [];
+
+let currentFilter = "all";
+
+
+/*
+========================================================
+LOAD PRODUCTS
+========================================================
+*/
+
+async function loadProducts() {
+
+    const grid =
+        document.getElementById("product-grid");
+
+
+    try {
+
+        const response =
+            await fetch(CATALOG_URL);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to connect to the catalog."
+            );
+
+        }
+
+
+        products =
+            await response.json();
+
+
+        renderProducts();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        grid.innerHTML = `
+
+            <div class="error">
+
+                <h3>
+                    The collection could not be loaded.
+                </h3>
+
+                <p>
+                    Please check the catalog connection.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/*
+========================================================
+RENDER PRODUCTS
+========================================================
+*/
+
+function renderProducts() {
+
+    const grid =
+        document.getElementById("product-grid");
+
+
+    let filteredProducts =
+        [...products];
+
+
+    if (currentFilter !== "all") {
+
+        filteredProducts =
+            filteredProducts.filter(product =>
+                matchesFilter(product)
+            );
+
+    }
+
+
+    if (filteredProducts.length === 0) {
+
+        grid.innerHTML = `
+
+            <div class="loading">
+
+                <h3>
+                    Nothing here yet.
+                </h3>
+
+                <p>
+                    Check back soon for new pieces.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filteredProducts
+            .map(product => createProductCard(product))
+            .join("");
+
+}
+
+
+/*
+========================================================
+FILTER LOGIC
+========================================================
+*/
+
+function matchesFilter(product) {
+
+    const category =
+        String(product.category || "")
+            .toLowerCase()
+            .trim();
+
+
+    const jewelryCategories = [
+
+        "necklaces",
+        "rings",
+        "earrings",
+        "bracelets",
+        "jewelry sets",
+        "arm bands"
+
+    ];
+
+
+    const clothingCategories = [
+
+        "winter wear",
+        "tops",
+        "bottoms",
+        "dresses",
+        "accessories"
+
+    ];
+
+
+    if (currentFilter === "all-jewelry") {
+
+        return jewelryCategories.includes(category);
+
+    }
+
+
+    if (currentFilter === "all-clothing") {
+
+        return clothingCategories.includes(category);
+
+    }
+
+
+    return category === currentFilter;
+
+}
+
+
+/*
+========================================================
+PRODUCT CARD
+========================================================
+*/
+
+function createProductCard(product) {
+
+    const price =
+        Number(product.price || 0);
+
+
+    let photoHTML;
+
+
+    if (product.photo) {
+
+        photoHTML = `
+
+            <img
+                src="${escapeHTML(product.photo)}"
+                alt="${escapeHTML(product.name)}"
+                loading="lazy"
+            >
+
+        `;
+
+    } else {
+
+        photoHTML = `
+
+            <div class="photo-placeholder">
+
+                <span>🐈‍⬛</span>
+
+                Photo coming soon
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <article class="product-card">
+
+
+            <div class="product-photo">
+
+                ${photoHTML}
+
+            </div>
+
+
+            <div class="product-info">
+
+
+                <h3>
+                    ${escapeHTML(product.name)}
+                </h3>
+
+
+                <div class="sku">
+
+                    SKU:
+                    ${escapeHTML(product.sku)}
+
+                </div>
+
+
+                ${
+                    product.materials
+                    ?
+                    `
+                    <div class="product-materials">
+
+                        ${escapeHTML(product.materials)}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                ${
+                    product.size
+                    ?
+                    `
+                    <div class="product-materials">
+
+                        Size:
+                        ${escapeHTML(product.size)}
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="product-price">
+
+                    $${price.toFixed(2)}
+
+                </div>
+
+
+                <div class="product-actions">
+
+
+                    <button
+                        class="details-button"
+                        onclick="showProductDetails('${escapeHTML(product.sku)}')">
+
+                        Details
+
+                    </button>
+
+
+                    <button
+                        class="add-button"
+                        onclick="addToCart('${escapeHTML(product.sku)}')">
+
+                        Add to Cart
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+    `;
+
+}
+
+
+/*
+========================================================
+FILTER PRODUCTS
+========================================================
+*/
+
+function filterProducts(filter) {
+
+    currentFilter =
+        filter.toLowerCase();
+
+
+    const title =
+        document.getElementById("catalog-title");
+
+
+    const titles = {
+
+        "all":
+            "Current Collection",
+
+        "all-jewelry":
+            "Jewelry",
+
+        "all-clothing":
+            "Clothing",
+
+        "necklaces":
+            "Necklaces",
+
+        "rings":
+            "Rings",
+
+        "earrings":
+            "Earrings",
+
+        "bracelets":
+            "Bracelets",
+
+        "jewelry sets":
+            "Jewelry Sets",
+
+        "arm bands":
+            "Arm Bands",
+
+        "winter wear":
+            "Winter Wear",
+
+        "tops":
+            "Tops",
+
+        "bottoms":
+            "Bottoms",
+
+        "dresses":
+            "Dresses",
+
+        "accessories":
+            "Accessories"
+
+    };
+
+
+    title.textContent =
+        titles[currentFilter] ||
+        "Current Collection";
+
+
+    renderProducts();
+
+
+    document
+        .querySelectorAll(".category-button")
+        .forEach(button =>
+            button.classList.remove("active")
+        );
+
+
+    document
+        .getElementById("catalog")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/*
+========================================================
+PRODUCT DETAILS
+========================================================
+*/
+
+function showProductDetails(sku) {
+
+    const product =
+        products.find(
+            item => String(item.sku) === String(sku)
+        );
+
+
+    if (!product) return;
+
+
+    const details = [
+
+        `Product: ${product.name}`,
+
+        `SKU: ${product.sku}`,
+
+        product.category
+            ? `Category: ${product.category}`
+            : "",
+
+        product.size
+            ? `Size: ${product.size}`
+            : "",
+
+        product.materials
+            ? `Materials: ${product.materials}`
+            : "",
+
+        `Price: $${Number(product.price || 0).toFixed(2)}`
+
+    ]
+    .filter(Boolean)
+    .join("\n");
+
+
+    alert(details);
+
+}
+
+
+/*
+========================================================
+CART
+========================================================
+*/
+
+function addToCart(sku) {
+
+    const product =
+        products.find(
+            item => String(item.sku) === String(sku)
+        );
+
+
+    if (!product) return;
+
+
+    const alreadyInCart =
+        cart.find(
+            item =>
+                String(item.sku) === String(sku)
+        );
+
+
+    /*
+       Each premade item is an individual item.
+       Therefore we don't increase quantity.
+    */
+
+    if (!alreadyInCart) {
+
+        cart.push(product);
+
+    }
+
+
+    updateCart();
+
+
+    document
+        .getElementById("cart-panel")
+        .classList.add("open");
+
+}
+
+
+/*
+========================================================
+REMOVE FROM CART
+========================================================
+*/
+
+function removeFromCart(sku) {
+
+    cart =
+        cart.filter(
+            item =>
+                String(item.sku) !== String(sku)
+        );
+
+
+    updateCart();
+
+}
+
+
+/*
+========================================================
+UPDATE CART
+========================================================
+*/
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cart-items");
+
+
+    const cartCount =
+        document.getElementById("cart-count");
+
+
+    const cartTotal =
+        document.getElementById("cart-total");
+
+
+    cartCount.textContent =
+        cart.length;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <p>
+                Your cart is empty.
+            </p>
+
+        `;
+
+        cartTotal.textContent =
+            "$0.00";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cartItems.innerHTML =
+        cart.map(product => {
+
+            const price =
+                Number(product.price || 0);
+
+
+            total += price;
+
+
+            return `
+
+                <div class="cart-item">
+
+                    <strong>
+                        ${escapeHTML(product.name)}
+                    </strong>
+
+                    <span>
+                        SKU: ${escapeHTML(product.sku)}
+                    </span>
+
+                    <br>
+
+                    <span>
+                        $${price.toFixed(2)}
+                    </span>
+
+
+                    <button
+                        class="remove-item"
+                        onclick="removeFromCart('${escapeHTML(product.sku)}')">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    cartTotal.textContent =
+        `$${total.toFixed(2)}`;
+
+}
+
+
+/*
+========================================================
+OPEN/CLOSE CART
+========================================================
+*/
+
+function toggleCart() {
+
+    document
+        .getElementById("cart-panel")
+        .classList.toggle("open");
+
+}
+
+
+/*
+========================================================
+CHECKOUT
+========================================================
+*/
+
+function startCheckout() {
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your cart is empty."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       We are intentionally leaving the actual
+       payment connection for the next stage.
+
+       The cart already knows:
+       - Product
+       - SKU
+       - Price
+
+       Next we'll add:
+       - Customer name
+       - Email
+       - Shipping address
+       - Shipping calculation
+       - Payment method
+       - Square / PayPal / Venmo workflow
+    */
+
+
+    const orderText =
+        cart
+            .map(product =>
+                `${product.sku} - ${product.name} - $${Number(product.price || 0).toFixed(2)}`
+            )
+            .join("\n");
+
+
+    alert(
+
+        "Your selected items:\n\n" +
+
+        orderText +
+
+        "\n\nCheckout will be connected in the next stage."
+
+    );
+
+}
+
+
+/*
+========================================================
+ESCAPE HTML
+========================================================
+*/
+
+function escapeHTML(value) {
+
+    return String(value || "")
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/*
+========================================================
+START WEBSITE
+========================================================
+*/
+
+loadProducts();
+
+</script>
+
+</body>
+</html>
